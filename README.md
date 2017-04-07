@@ -8,6 +8,6 @@ This software will allow you to host a password generator that works with PHP, M
 
 Simply put the password length that is desired and click generate, and like magic, a password comes up.
 
-###Credits
+### Credits
 
 Word list: http://www-01.sil.org/linguistics/
