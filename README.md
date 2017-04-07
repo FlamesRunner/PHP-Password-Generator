@@ -1,5 +1,5 @@
 # PHP Password Generator
----
+--
 ### Preview
 
 ![screenshot1](https://s.flamz.pw/img/687c99daad7f2dca496ddd6398d3db15.png "Screenshot #1")
