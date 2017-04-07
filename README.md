@@ -5,4 +5,5 @@
 ![screenshot2](https://s.flamz.pw/img/82c8e1c205ce2f39adada7286aaa4861.png "Screenshot #2")
 
 This software will allow you to host a password generator that works with PHP, MaterializeCSS and jQuery.
+
 Simply put the password length that is desired and click generate, and like magic, a password comes up.
