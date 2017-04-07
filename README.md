@@ -1,1 +1,1 @@
-# PHP-Password-Generator
+# PHP Password Generator
