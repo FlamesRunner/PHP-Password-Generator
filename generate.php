@@ -1,65 +1,24 @@
 <?php
 function generateRandomPassword($characters = 7) {
-
 	$words = file_get_contents('wordlist.txt');
-	$symbol_list = '@,&,!,#,$,%';
-	$symbols = explode(',', $symbol_list);
-	$array = explode("\n", $words);
-        $wordcount = count($array);
-	$symbolcount = count($symbols);
-	$words = '';
-	$password = '';
-
+	$symbols = array('@, &, !, #, $, %');
+	$wordList = explode("\n", $words);
         for ($i = 0; $i <= $characters; $i++){
-
-		$password = trim($password);
-
-		if (strlen($password) >= $characters){
-			break;
-		}
-
-	        $choice = rand(0, $wordcount);
-		$words .= $array[$choice];
-		$choosecase = rand(0, 100);
-		$letter = substr($array[$choice], 0, 1);
-
-		if ($choosecase > 50) {
-			$password .= strtoupper($letter);
-		} else {
-			$password .= strtolower($letter);
-		}
-		
-		$addsymbol = rand(0, 100);
-
-		if ($addsymbol > 80){
-			$which_symbol = rand(1, $symbolcount);
-			$password .= $symbols[$which_symbol];
-			$words .= $symbols[$which_symbol] . ' ';
+		if (strlen($password) >= $characters) break;
+	        $choice = rand(0, count($wordList));
+		$passwordPhrase .= $wordList[$choice];
+		if (rand(0, 100) > 50) $password .= strtoupper(substr($wordList[$choice], 0, 1));
+		if (rand(0, 100) > 80){
+			$symbolID = rand(0, count($symbols));
+			$password .= $symbols[$symbolID];
+			$passwordPhrase .= $symbols[$symbolID] . ' ';
 		}
 	}
-
-	$values = array('password' => $password, 'words' => $words);
+	$values = array('password' => $password, 'words' => $passwordPhrase);
 	return $values;
 }
 
-$error = 0;
-
-if (!isset($_POST['len'])) {
-	$length = 7;
-} 
-
-if (!is_numeric($_POST['len'])){
-	$length = 7;
-} else {
-	if ($_POST['len'] > 64){
-		$length = 7;
-	} else {
-		$length = $_POST['len'];
-	}
-}
-
-$data = generateRandomPassword($length);
-
-echo json_encode($data);
-
+$length = $_POST['len'];
+if (!isset($_POST['len']) || !is_numeric($_POST['len']) || $_POST['len'] > 64) $length = 7;
+echo json_encode(generateRandomPassword($length));
 ?>
