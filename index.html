@@ -4,18 +4,12 @@
 <title>Password Generator</title>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-body {
-	font-family: 'Century Gothic';
-}
-</style>
 </head>
-<body>
+<body style="font-family: Century Gothic">
 	<div style="padding-top: 5%;"></div>
 	<div class="container">	
 		<h1>password generator</h1>
@@ -24,15 +18,12 @@ body {
 		<form id="generateform" action="generate.php" method="POST">
 			<div class="input-field">
                                 <label for="len">Length</label>
-				<input id="len" name="len" placeholder="Password length (maximum 64)..." type="number">
+				<input id="len" name="len" placeholder="Password length (maximum 64)..." type="number" maxlen="64">
 			</div>
 			<input class="btn" type="submit" value="Generate">
 		</form>
 	</div>
-
-	<br />
-	<br />
-
+	<br /><br />
 	<div id="passwordGenerated" class="modal bottom-sheet">
 		<div class="modal-content">
 			<h4>your new password</h4>
@@ -42,10 +33,9 @@ body {
 			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Got it!</a>
 		</div>
 	</div>
-
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script>
-	$('#generateform').submit(function() { // catch the form's submit event
+	$('#generateform').submit(function() {
 		$.ajax({
 		data: $(this).serialize(),
 		type: $(this).attr('method'),
@@ -57,7 +47,7 @@ body {
 			$('#passwordGenerated').modal('open');
 	        }
 	    });
-	    return false; // cancel original event to prevent form submitting
+	    return false;
 	});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
