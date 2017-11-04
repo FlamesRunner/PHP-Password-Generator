@@ -1,7 +1,7 @@
 <?php
 function generateRandomPassword($characters = 7) {
 	$words = file_get_contents('wordlist.txt');
-	$symbols = array('@, &, !, #, $, %');
+	$symbols = array('@', '&', '!', '#', '$', '%');
 	$wordList = explode("\n", $words);
         for ($i = 0; $i <= $characters; $i++){
 		if (strlen($password) >= $characters) break;
